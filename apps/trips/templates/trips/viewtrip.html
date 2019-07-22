@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <div class="container">
+
+                <div class="header">
+                    <h1>Trip {{trip_html.id}}</h1>
+                    <a href="/success">Go Back</a>
+                </div>
+        
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+                            {{message}}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+        
+                <div class="content">
+                    <p>Destination: {{trip_html.destination}}</p>
+                    <p>Start Date: {{trip_html.startdate}}</p>
+                    <p>End Date: {{trip_html.enddate}}</p>
+                    <p>Plan: {{trip_html.plan}}</p>
+                    <p>Last Updated: {{trip_html.updated_at}}</p>
+
+                </div>
+        
+                <div>
+                    <p><a href="/trips/{{trip_html.id}}/edit">Edit</a> | <a href="/trips/{{trip_html.id}}/delete">Delete</a></p>
+                </div>
+        
+            </div>
+</body>
+</html>

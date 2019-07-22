@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Edit Job {{job_html.id}}</h1>
+            <a href="/success">Go Back</a>
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+                    {{message}}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <form action="/trips/{{trip_html.id}}/edit/process" method="post">
+            {% csrf_token %}
+            <p>Destination</p>
+            <input type="text" name="destination" value="{{trip_html.destination}}">
+            <p>Start Date</p>
+            <input type="date" name="startdate" id="startdate" value="{{trip_html.startdate}}">
+            <p>End Date</p>
+            <input type="date" name="enddate"  value="{{trip_html.enddate}}">
+            <p>Plan</p>
+            <input type="text" name="plan"  value="{{trip_html.plan}}">
+            <button type="submit" class="btn btn-primary">Update</button>        
+        </form>
+
+        <a href="/trips/{{job_html.id}}">Go to trips</a>
+
+    </div>
+</body>
+</html>

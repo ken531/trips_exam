@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <form action='/register' method="POST">
+        {% csrf_token %}
+        <div>
+            <label for ='first_name'>First Name</label>
+            <input name = "first_name" id="first_name" type='text'>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if "first_name_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div>
+            <label for ='last_name'>Last Name</label>
+            <input name = 'last_name' id='last_name' type='text'>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if "last_name_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div>
+            <label for = 'email'>Email</label>
+            <input name = 'email' id = 'email' type='text'>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if "email_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div>
+            <label for = 'password'>Password</label>
+            <input name = 'password' type = 'password' id='password'>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if "password_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div>
+            <label for = 'confirm_password'>Confirm Password</label>
+            <input name = 'confirm_password' type='password' id='confirm_password'>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                {% if "confirm_password_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <button>Register</button>
+    </form>
+    <h1>Login</h1>
+    <form action ='/login' method = 'POST'>
+    {% csrf_token %}
+    <div>
+        <label for = 'email'>Email</label>
+        <input name = 'email' type ='text' id='email'>
+    </div>
+    {% if messages %}
+            {% for message in messages %}
+                {% if "login_user_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    <div>
+        <label for = 'password'>Password</label>
+        <input name = 'password' type='password' id='password'>
+    </div>
+    {% if messages %}
+            {% for message in messages %}
+                {% if "login_pw_error" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    <button>Log In</button>
+    </form>
+</body>
+</html>

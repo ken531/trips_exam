@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <h1>Add a New Job</h1>
+            <a href="/success">Go Back</a>
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{message.tags}}" {% endif %}>
+                    {{message}}
+                </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h1>Create A New Trip!</h1>
+        <form action="/trips/new/add" method="post">
+            {% csrf_token %}
+            <p>Destination</p>
+            <input type="text" name="destination" id="destination">
+            <p>Start Date</p>
+            <input type="date" name="startdate" id="startdate">
+            <p>End Date</p>
+            <input type="date" name="enddate" id="enddate">
+            <p>Plan</p>
+            <input type="textare" name="plan" id="plan">
+            <button type="submit" class="btn btn-primary">Create</button>     
+
+    </div>
+</body>
+</html>
